@@ -23,6 +23,7 @@ public class NullFixer implements Listener {
     @EventHandler
     public void onJoin(PlayerLoginEvent event) {
         UUID uuid = event.getPlayer().getUniqueId();
+
         if (PlayerStats.getStats().get(event.getPlayer().getUniqueId() + ".Info.hasPlayedBefore") == null) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, " §#ad07ff§lL§#9f20ff§lu§#9239fe§lm§#8451fe§li§#776afd§ln§#6983fd§la\n\n§3Your character has generated, you can rejoin!");
             Regeneration.mana.put(event.getPlayer(), 100.0);
@@ -39,6 +40,7 @@ public class NullFixer implements Listener {
             PlayerStats.saveStats();
 
         }
+        PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
         LuminousManagerSetupTask setupTask = new LuminousManagerSetupTask(event.getPlayer());
         setupTask.start();
         if (PlayerStats.getStats().get(event.getPlayer().getUniqueId() + ".Info.Religion") == null) {

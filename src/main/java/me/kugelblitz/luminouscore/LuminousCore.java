@@ -30,6 +30,7 @@ public final class LuminousCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getConfig().set("license","empty");
         getServer().getConsoleSender().sendMessage("§aThe license key is correct! Enabling LuminousCore...");
         plugin = this;
         getConfig().options().copyDefaults();
@@ -37,7 +38,7 @@ public final class LuminousCore extends JavaPlugin {
         MayorHandler.mayor = getConfig().getString("mayor");
         new LuminousManager();
         addFields();
-checkLicense();
+        checkLicense();
     }
 
 

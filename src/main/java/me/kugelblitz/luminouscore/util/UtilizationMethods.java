@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.Vector;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -98,6 +99,14 @@ public class UtilizationMethods {
             }
         }
         return nearbyPlayers;
+    }
+
+    public static String getPlayerIPAddress(Player player) {
+        InetSocketAddress address = player.getAddress();
+        if (address != null) {
+            return address.getAddress().getHostAddress();
+        }
+        return null;
     }
 
     @Deprecated
