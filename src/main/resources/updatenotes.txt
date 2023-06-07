@@ -1,0 +1,20 @@
+Update: 0.0.5-ALPHA
+-Added nightmare mob
+-Added nightmare mob to /spawnmob
+-Renamed "/spawnmob" to "/spawncustommob"
+-Added UtilizationMethod "generateCircle(location,particle,radius)"
+-Added UtilizationMethod "getNearbyPlayers(location,radius)"
+
+Update: 0.0.6-ALPHA
+-Custom damage calculation is *finally* here, you'll deal with the religion buffs later.
+-Removed "CustomDamageLogic.java", added "DamageCalculation.java" instead.
+-OMG ADDED LUMINOUS MANAGER
+--don't forget to make it useful. Also, you can for some reason pick up the glass panes even though you're preventing that.
+--make sure to prevent the glass pane bug!
+--It probably is a bug farm, so don't forget to check it!
+-Added twilight-resonance, it doesn't have a use rn tho
+-ArcaneHaven is here! Not really, the build isn't done yet, completely non-existent. It'll be like a spirit-world but better.
+-Changed nightmare mobs dimension to ArcaneHaven.
+
+Update 0.0.7-ALPHA
+-for fuck's sake please add the sean mayor omg
