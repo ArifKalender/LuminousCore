@@ -39,6 +39,7 @@ public class NullFixer implements Listener {
             PlayerStats.saveStats();
 
         }
+        PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
         LuminousManagerSetupTask setupTask = new LuminousManagerSetupTask(event.getPlayer());
         setupTask.start();
         if (PlayerStats.getStats().get(event.getPlayer().getUniqueId() + ".Info.Religion") == null) {
