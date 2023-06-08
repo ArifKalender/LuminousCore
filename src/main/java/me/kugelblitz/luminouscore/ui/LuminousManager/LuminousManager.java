@@ -7,6 +7,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -21,19 +22,21 @@ public class LuminousManager implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (player.getInventory() != null) {
-            if (player.getInventory().getItemInMainHand() != null) {
-                if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
-                            openGui(player);
+        if ((event.getAction().equals(Action.RIGHT_CLICK_AIR)) || (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
+
+            if (player.getInventory() != null) {
+                if (player.getInventory().getItemInMainHand() != null) {
+                    if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
+                        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
+                            if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
+                                openGui(player);
+                            }
                         }
                     }
                 }
             }
         }
     }
-
 
     public void openGui(Player player) {
         Inventory gui = Bukkit.createInventory(player, 9 * 3, "§3Luminous Manager");
@@ -62,10 +65,10 @@ public class LuminousManager implements Listener {
         playerHeadMeta.setLore(Arrays.asList("", religion, footprint, intelligence, damage, maxHealth, agility));
         playerHead.setItemMeta(playerHeadMeta);
 
-        ItemStack leveling = new ItemStack(Material.EMERALD,1);
+        ItemStack leveling = new ItemStack(Material.EMERALD, 1);
         ItemMeta levelingMeta = leveling.getItemMeta();
-        levelingMeta.setDisplayName("§3"+player.getName()+"'s Valor");
-        levelingMeta.setLore(Arrays.asList("","§8Your Valor: [§7"+player.getLevel()+"§8]","Leveling up your valor will increase","your health, which indirectly increases","your attack damage. To level up","your valor, simply progress through","the gameplay.","","§3Your health boost: "+(player.getLevel()*7),"§3Your damage boost: "+(int)(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()*0.87)));
+        levelingMeta.setDisplayName("§3" + player.getName() + "'s Valor");
+        levelingMeta.setLore(Arrays.asList("", "§8Your Valor: [§7" + player.getLevel() + "§8]", "Leveling up your valor will increase", "your health, which indirectly increases", "your attack damage. To level up", "your valor, simply progress through", "the gameplay.", "", "§3Your health boost: " + (player.getLevel() * 7), "§3Your damage boost: " + (int) (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.57)));
         leveling.setItemMeta(levelingMeta);
         for (int i = 0; i < 9 * 3; i++) {
             gui.setItem(i, fill);

@@ -16,7 +16,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
  * not lazy enough to do that.*/
 
 
-public class DamageCalculation implements Listener {
+public class CustomDamageManager implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -25,7 +25,7 @@ public class DamageCalculation implements Listener {
                 Player player = (Player) event.getDamager();
                 double originalDamage = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
                 double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-                double newDamage = originalDamage+(maxHealth * 0.87) + (originalDamage * 1.76);
+                double newDamage = (maxHealth * 0.87) + (originalDamage * 1.76);
 
                 event.setCancelled(true);
                 ((LivingEntity) event.getEntity()).damage(newDamage);
