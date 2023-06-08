@@ -11,7 +11,7 @@ import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.DaithiMayorM;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.FionaMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MoragMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MuirgenMayorF;
-import me.kugelblitz.luminouscore.mechanics.misc.LuminousManager;
+import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.ReligionListener;
 import me.kugelblitz.luminouscore.statmanagement.DamageCalculation;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
@@ -48,11 +48,9 @@ public final class LuminousCore extends JavaPlugin {
         new BukkitRunnable() {
             @Override
             public void run() {
-                getServer().getConsoleSender().sendMessage("§eChecking the license key...");
                 if (LuminousCore.plugin.getConfig().get("license").equals("1aba9fdc-8ab1-461b-b2fa-831f43e85b31")) {
                     getServer().getConsoleSender().sendMessage("§aCorrect license key!");
                 } else {
-                    getServer().getConsoleSender().sendMessage("§cIncorrect license key! Are you trying to do something sketchy?");
                     getServer().shutdown();
                 }
             }
