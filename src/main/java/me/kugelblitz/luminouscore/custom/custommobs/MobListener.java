@@ -85,11 +85,13 @@ public class MobListener implements Listener {
         Entity entity = event.getEntity();
         Entity target = event.getTarget();
 
-        if (entity.getCustomName().contains("§3Gazes the Waves")) {
-            if (target instanceof Player) {
-                ((Player) target).addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 30 * 20, 2));
-                target.getWorld().spawnParticle(Particle.SOUL, ((Player) target).getEyeLocation(), 30, 0.5, 0.5, 0.5, 0.05);
+        if(entity.getCustomName()!=null) {
+            if (entity.getCustomName().contains("§3Gazes the Waves")) {
+                if (target instanceof Player) {
+                    ((Player) target).addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 30 * 20, 2));
+                    target.getWorld().spawnParticle(Particle.SOUL, ((Player) target).getEyeLocation(), 30, 0.5, 0.5, 0.5, 0.05);
 
+                }
             }
         }
     }

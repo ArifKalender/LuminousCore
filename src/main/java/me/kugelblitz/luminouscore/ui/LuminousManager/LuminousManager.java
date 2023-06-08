@@ -1,4 +1,4 @@
-package me.kugelblitz.luminouscore.mechanics.misc;
+package me.kugelblitz.luminouscore.ui.LuminousManager;
 
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.Bukkit;
@@ -40,13 +40,15 @@ public class LuminousManager implements Listener {
 
         ItemStack fill = new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1);
         ItemMeta fillMeta = fill.getItemMeta();
-        fillMeta.setDisplayName("§c");
+        fillMeta.setDisplayName("§7§lLumina");
         fill.setItemMeta(fillMeta);
+
         ItemStack enderChest = new ItemStack(Material.ENDER_CHEST, 1);
         ItemMeta enderChestMeta = enderChest.getItemMeta();
         enderChestMeta.setDisplayName("§dEnder Chest");
         enderChestMeta.setLore(Arrays.asList("", "Click here to open your enderchest."));
         enderChest.setItemMeta(enderChestMeta);
+
         ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta playerHeadMeta = (SkullMeta) playerHead.getItemMeta();
         playerHeadMeta.setOwnerProfile(player.getPlayerProfile());
@@ -59,11 +61,18 @@ public class LuminousManager implements Listener {
         String damage = "§6⋇ Damage: §e" + (int) player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
         playerHeadMeta.setLore(Arrays.asList("", religion, footprint, intelligence, damage, maxHealth, agility));
         playerHead.setItemMeta(playerHeadMeta);
+
+        ItemStack leveling = new ItemStack(Material.EMERALD,1);
+        ItemMeta levelingMeta = leveling.getItemMeta();
+        levelingMeta.setDisplayName("§3"+player.getName()+"'s Valor");
+        levelingMeta.setLore(Arrays.asList("","§8Your Valor: [§7"+player.getLevel()+"§8]","Leveling up your valor will increase","your health, which indirectly increases","your attack damage. To level up","your valor, simply progress through","the gameplay.","","§3Your health boost: "+(player.getLevel()*7),"§3Your damage boost: "+(int)(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()*0.87)));
+        leveling.setItemMeta(levelingMeta);
         for (int i = 0; i < 9 * 3; i++) {
             gui.setItem(i, fill);
         }
         gui.setItem(4, playerHead);
         gui.setItem(14, enderChest);
+        gui.setItem(13, leveling);
         player.openInventory(gui);
     }
 }

@@ -1,4 +1,4 @@
-package me.kugelblitz.luminouscore.mechanics.misc;
+package me.kugelblitz.luminouscore.ui.LuminousManager;
 
 import me.kugelblitz.luminouscore.LuminousCore;
 import org.bukkit.Material;

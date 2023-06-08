@@ -17,4 +17,7 @@ Update: 0.0.6-ALPHA
 -Changed nightmare mobs dimension to ArcaneHaven.
 
 Update 0.0.7-ALPHA
+-NullPointer exception at line 88 of MobListener.java has been fixed.
+-Added leveling system to LuminousManager.
+-
 -for fuck's sake please add the sean mayor omg

@@ -2,7 +2,7 @@ package me.kugelblitz.luminouscore.util;
 
 import me.kugelblitz.luminouscore.LuminousCore;
 import me.kugelblitz.luminouscore.custom.customitems.items.CorruptedHeart;
-import me.kugelblitz.luminouscore.mechanics.misc.LuminousManagerSetupTask;
+import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManagerSetupTask;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.CrystalLexicon;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import org.bukkit.attribute.Attribute;

@@ -1,6 +1,6 @@
 package me.kugelblitz.luminouscore.ui;
 
-import me.kugelblitz.luminouscore.mechanics.misc.LuminousManager;
+import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -61,7 +61,8 @@ public class ClickEvent implements Listener {
             event.getWhoClicked().openInventory(event.getWhoClicked().getEnderChest());
         } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§a" + event.getWhoClicked().getName())) {
             event.setCancelled(true);
-        } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§c")) {
+        } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7§lLumina")) {
+            event.setCancelled(true);
         }
     }
 
