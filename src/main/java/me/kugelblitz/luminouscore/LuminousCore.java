@@ -5,18 +5,19 @@ import me.kugelblitz.luminouscore.custom.customitems.ItemFix;
 import me.kugelblitz.luminouscore.custom.customitems.items.ItemListener;
 import me.kugelblitz.luminouscore.custom.customitems.items.LuckyCharm;
 import me.kugelblitz.luminouscore.custom.custommobs.MobListener;
+import me.kugelblitz.luminouscore.mechanics.abilities.AbilityListener;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.CurrentMayor;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.MayorHandler;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.DaithiMayorM;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.FionaMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MoragMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MuirgenMayorF;
-import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.ReligionListener;
-import me.kugelblitz.luminouscore.statmanagement.DamageCalculation;
+import me.kugelblitz.luminouscore.statmanagement.CustomDamageManager;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import me.kugelblitz.luminouscore.ui.ClickEvent;
 import me.kugelblitz.luminouscore.ui.FootprintMenu;
+import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
 import me.kugelblitz.luminouscore.util.NullFixer;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import me.kugelblitz.luminouscore.util.commands.*;
@@ -30,8 +31,8 @@ public final class LuminousCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if(getConfig().get("license")==null){
-            getConfig().set("license","null");
+        if (getConfig().get("license") == null) {
+            getConfig().set("license", "null");
         }
         getServer().getConsoleSender().sendMessage("§aThe license key is correct! Enabling LuminousCore...");
         plugin = this;
@@ -84,11 +85,12 @@ public final class LuminousCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MoragMayorF(), this);
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
+        getServer().getPluginManager().registerEvents(new AbilityListener(), this);
         getServer().getPluginManager().registerEvents(new ReligionListener(), this);
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
         getServer().getPluginManager().registerEvents(new ClickEvent(), this);
-        getServer().getPluginManager().registerEvents(new DamageCalculation(), this);
+        getServer().getPluginManager().registerEvents(new CustomDamageManager(), this);
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
         getServer().getPluginManager().registerEvents(new LuminousManager(), this);
