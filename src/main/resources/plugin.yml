@@ -27,3 +27,5 @@ commands:
     description: LuminousCore | TEMPORARY > Opens the Crystal Lexicon.
   triggerevent:
     description: LuminousCore | Trigger an event. Usage; /triggerevent <start/end> <twilightresonance/silentshaman>
+  resetplayer:
+    description: LuminousCore | Reset a player.

@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
+import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
@@ -41,7 +42,7 @@ public class AbilityListener implements Listener {
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
-
+                                new CelestialVitality(player);
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
                                 new WitheristIntoxication(player);
                             } else {

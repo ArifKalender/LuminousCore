@@ -107,6 +107,7 @@ public final class LuminousCore extends JavaPlugin {
         this.getCommand("triggerevent").setExecutor(new TriggerEvent());
         this.getCommand("adminitem").setExecutor(new AdminItem());
         this.getCommand("reloadlumina").setExecutor(new ReloadLumina());
+        this.getCommand("resetplayer").setExecutor(new ResetPlayer());
         this.getCommand("footprints").setExecutor(new FootprintMenu());
         this.getCommand("seteventlocation").setExecutor(new SetEventLocation());
         this.getCommand("createitem").setExecutor(new CreateItem());
