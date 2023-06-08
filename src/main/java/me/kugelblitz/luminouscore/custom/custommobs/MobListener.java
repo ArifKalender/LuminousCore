@@ -64,8 +64,6 @@ public class MobListener implements Listener {
                 }
             }
         }
-
-
     }
 
     @EventHandler
