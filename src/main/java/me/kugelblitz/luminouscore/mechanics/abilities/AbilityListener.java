@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
+import me.kugelblitz.luminouscore.mechanics.abilities.deltus.DeltusBeliever;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.FieryAura;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.MysticalSeal;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
@@ -71,7 +72,7 @@ public class AbilityListener implements Listener {
         }else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
 
         }else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
-
+            new DeltusBeliever(player);
         }else {
 
         }
