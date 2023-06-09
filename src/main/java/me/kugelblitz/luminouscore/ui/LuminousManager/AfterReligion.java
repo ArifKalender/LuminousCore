@@ -5,10 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -16,27 +12,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.Arrays;
 
-public class LuminousManager implements Listener {
-
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if ((event.getAction().equals(Action.RIGHT_CLICK_AIR)) || (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
-
-            if (player.getInventory() != null) {
-                if (player.getInventory().getItemInMainHand() != null) {
-                    if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
-                        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
-                            if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
-                                openGui(player);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+public class AfterReligion {
 
     public void openGui(Player player) {
         Inventory gui = Bukkit.createInventory(player, 9 * 3, "§dCrystal Lexicon");
@@ -68,7 +44,7 @@ public class LuminousManager implements Listener {
         ItemStack leveling = new ItemStack(Material.EMERALD, 1);
         ItemMeta levelingMeta = leveling.getItemMeta();
         levelingMeta.setDisplayName("§3" + player.getName() + "'s Valor");
-        levelingMeta.setLore(Arrays.asList("", "§8Your Valor: [§7" + player.getLevel() + "§8]", "Leveling up your valor will increase", "your health, which indirectly increases", "your attack damage. To level up", "your valor, simply progress through", "the gameplay.", "", "§3Your health boost: " + (player.getLevel() * 7), "§3Your damage boost: " + (int) (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.57)));
+        levelingMeta.setLore(Arrays.asList("", "§8Your Valor: [§7" + player.getLevel() + "§8]", "Leveling up your valor will increase", "your health, which indirectly increases", "your attack damage. To level up", "your valor, simply progress through", "the gameplay.", "", "§3Your health boost: " + (player.getLevel() * 7), "§3Your damage boost: " + (int) ((player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()-100) * 0.57)));
         leveling.setItemMeta(levelingMeta);
         for (int i = 0; i < 9 * 3; i++) {
             gui.setItem(i, fill);

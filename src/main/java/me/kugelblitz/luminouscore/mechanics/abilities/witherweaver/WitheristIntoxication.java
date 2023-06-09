@@ -15,18 +15,19 @@ public class WitheristIntoxication {
     Location location;
     Location origin;
     Vector direction;
-    public WitheristIntoxication(Player player){
-        location=player.getEyeLocation();
-        origin=location.clone();
-        direction=location.getDirection();
-        new BukkitRunnable(){
+
+    public WitheristIntoxication(Player player) {
+        location = player.getEyeLocation();
+        origin = location.clone();
+        direction = location.getDirection();
+        new BukkitRunnable() {
             @Override
             public void run() {
                 location.add(direction.multiply(1));
-                location.getWorld().spawnParticle(Particle.SOUL,location,8,0.3F,0.3F,0.3F,0.05F);
-                for(Entity entity:location.getWorld().getNearbyEntities(location,1,1,1)){
-                    if(entity instanceof LivingEntity){
-                        if(entity != player) {
+                location.getWorld().spawnParticle(Particle.SOUL, location, 8, 0.3F, 0.3F, 0.3F, 0.05F);
+                for (Entity entity : location.getWorld().getNearbyEntities(location, 1, 1, 1)) {
+                    if (entity instanceof LivingEntity) {
+                        if (entity != player) {
                             ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 5, 1, false));
                             ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 5, 15, false));
                             ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 5, 15, false));
@@ -38,14 +39,14 @@ public class WitheristIntoxication {
                     }
                 }
 
-                if(origin.distance(location)>=20){
-                    location=null;
-                    direction=null;
-                    origin=null;
+                if (origin.distance(location) >= 20) {
+                    location = null;
+                    direction = null;
+                    origin = null;
                     this.cancel();
                 }
             }
-        }.runTaskTimer(LuminousCore.plugin,0,1);
+        }.runTaskTimer(LuminousCore.plugin, 0, 1);
     }
 
 }

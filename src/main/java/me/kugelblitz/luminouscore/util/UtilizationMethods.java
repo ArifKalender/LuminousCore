@@ -117,4 +117,49 @@ public class UtilizationMethods {
         return head;
     }
 
+
+
+
+
+
+
+    public static void createTriangle(Location middle, double size, Particle particle) {
+        // Calculate the offset based on the size
+        double offset = size / 2;
+
+        // Calculate the corner points of the triangle
+        Location point1 = middle.clone().add(0, offset, -offset);
+        Location point2 = middle.clone().add(-offset, offset, offset);
+        Location point3 = middle.clone().add(offset, offset, offset);
+
+        // Generate the particles for each side of the triangle
+        generateParticlesBetweenPoints(point1, point2, particle);
+        generateParticlesBetweenPoints(point2, point3, particle);
+        generateParticlesBetweenPoints(point3, point1, particle);
+    }
+
+    private static  void generateParticlesBetweenPoints(Location start, Location end, Particle particle) {
+        // Calculate the distance between the two points
+        double distance = start.distance(end);
+
+        // Calculate the number of particles to generate based on the distance
+        int particleCount = (int) Math.ceil(distance);
+
+        // Calculate the direction vector between the two points
+        double directionX = (end.getX() - start.getX()) / distance;
+        double directionY = (end.getY() - start.getY()) / distance;
+        double directionZ = (end.getZ() - start.getZ()) / distance;
+
+        // Generate particles along the line between the two points
+        for (int i = 0; i <= particleCount; i++) {
+            double offsetX = directionX * i;
+            double offsetY = directionY * i;
+            double offsetZ = directionZ * i;
+
+            Location particleLocation = start.clone().add(offsetX, offsetY, offsetZ);
+            particleLocation.getWorld().spawnParticle(particle, particleLocation, 1,0,0,0,0);
+        }
+    }
+
+
 }

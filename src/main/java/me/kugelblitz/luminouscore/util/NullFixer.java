@@ -2,7 +2,6 @@ package me.kugelblitz.luminouscore.util;
 
 import me.kugelblitz.luminouscore.LuminousCore;
 import me.kugelblitz.luminouscore.custom.customitems.items.CorruptedHeart;
-import me.kugelblitz.luminouscore.mechanics.religionmanager.CrystalLexicon;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManagerSetupTask;
 import org.bukkit.attribute.Attribute;
@@ -43,22 +42,6 @@ public class NullFixer implements Listener {
         PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
         LuminousManagerSetupTask setupTask = new LuminousManagerSetupTask(event.getPlayer());
         setupTask.start();
-        if (PlayerStats.getStats().get(event.getPlayer().getUniqueId() + ".Info.Religion") == null) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-
-                    new CrystalLexicon().openLexicon(event.getPlayer());
-                    if (PlayerStats.getStats().get(event.getPlayer().getUniqueId() + ".Info.Religion") != null) {
-                        event.getPlayer().closeInventory();
-                        this.cancel();
-                    }
-                    if (event.getPlayer().isOnline()) {
-                        this.cancel();
-                    }
-                }
-            }.runTaskTimer(LuminousCore.plugin, 0, 1);
-        }
         event.getPlayer().setHealth(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         CorruptedHeart.healcd.put(event.getPlayer(), false);
 

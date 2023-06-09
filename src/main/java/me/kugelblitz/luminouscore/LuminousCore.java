@@ -12,12 +12,13 @@ import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.DaithiMayorM;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.FionaMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MoragMayorF;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MuirgenMayorF;
+import me.kugelblitz.luminouscore.mechanics.religionmanager.BeforeReligion;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.ReligionListener;
 import me.kugelblitz.luminouscore.statmanagement.CustomDamageManager;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import me.kugelblitz.luminouscore.ui.ClickEvent;
 import me.kugelblitz.luminouscore.ui.FootprintMenu;
-import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
+import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
 import me.kugelblitz.luminouscore.util.NullFixer;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import me.kugelblitz.luminouscore.util.commands.*;
@@ -39,7 +40,7 @@ public final class LuminousCore extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         MayorHandler.mayor = getConfig().getString("mayor");
-        new LuminousManager();
+        new AfterReligion();
         addFields();
         checkLicense();
     }
@@ -89,11 +90,11 @@ public final class LuminousCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ReligionListener(), this);
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
+        getServer().getPluginManager().registerEvents(new BeforeReligion(), this);
         getServer().getPluginManager().registerEvents(new ClickEvent(), this);
         getServer().getPluginManager().registerEvents(new CustomDamageManager(), this);
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
-        getServer().getPluginManager().registerEvents(new LuminousManager(), this);
         getServer().getPluginManager().registerEvents(new NullFixer(), this);
 
         new Regeneration().regenerate();

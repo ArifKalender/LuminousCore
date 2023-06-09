@@ -1,21 +1,52 @@
 package me.kugelblitz.luminouscore.mechanics.religionmanager;
 
+import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
+import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 
-public class CrystalLexicon implements Listener {
+public class BeforeReligion implements Listener {
     @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
+    public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+        if(event.getAction()== Action.RIGHT_CLICK_AIR || event.getAction()==Action.RIGHT_CLICK_BLOCK){
+            if (player.getInventory()!=null){
+                if(player.getInventory().getItemInMainHand()!=null){
+                    if (player.getInventory().getItemInMainHand().getItemMeta()!=null){
+                        if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName()!=null){
+
+                            if(PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion")==null){
+                                openLexicon(player);
+                            }
+                            else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+                                new AfterReligion().openGui(player);
+                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+                                new AfterReligion().openGui(player);
+
+                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
+                                new AfterReligion().openGui(player);
+
+                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
+                                new AfterReligion().openGui(player);
+
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void openLexicon(Player player) {
