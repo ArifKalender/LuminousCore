@@ -1,11 +1,10 @@
 package me.kugelblitz.luminouscore.ui;
 
-import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManager;
+import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
@@ -55,7 +54,7 @@ public class ClickEvent implements Listener {
                 event.setCancelled(true);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
                 event.setCancelled(true);
-                new LuminousManager().openGui((Player) event.getWhoClicked());
+                new AfterReligion().openGui((Player) event.getWhoClicked());
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dEnder Chest")) {
                 event.setCancelled(true);
                 event.getWhoClicked().openInventory(event.getWhoClicked().getEnderChest());
@@ -80,7 +79,7 @@ public class ClickEvent implements Listener {
                 if (itemStack.getItemMeta().getDisplayName() != null) {
                     if (itemStack.getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
                         event.setCancelled(true);
-                        new LuminousManager().openGui(player);
+                        new AfterReligion().openGui(player);
                     }
                 }
             }

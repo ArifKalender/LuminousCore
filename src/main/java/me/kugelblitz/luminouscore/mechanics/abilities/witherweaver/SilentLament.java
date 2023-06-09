@@ -4,7 +4,6 @@ import me.kugelblitz.luminouscore.LuminousCore;
 import me.kugelblitz.luminouscore.util.UtilizationMethods;
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,25 +14,26 @@ import java.util.HashMap;
 //cd 120sn
 
 public class SilentLament {
-    public static HashMap<Player,Boolean> silentLamentCooldown = new HashMap<Player,Boolean>();
-    public int j=0;
-    public int cd=0;
+    public static HashMap<Player, Boolean> silentLamentCooldown = new HashMap<Player, Boolean>();
+    public int j = 0;
+    public int cd = 0;
     Location randomLocation;
-    public SilentLament(Player player){
+
+    public SilentLament(Player player) {
         if (silentLamentCooldown.get(player) == null) {
-            silentLamentCooldown.put(player,true);
-            new BukkitRunnable(){
+            silentLamentCooldown.put(player, true);
+            new BukkitRunnable() {
                 @Override
                 public void run() {
                     cd++;
-                    if(cd>=120){
-                        silentLamentCooldown.put(player,null);
+                    if (cd >= 120) {
+                        silentLamentCooldown.put(player, null);
                         this.cancel();
                         player.sendMessage("§aSilentShaman is available.");
                     }
                 }
-            }.runTaskTimer(LuminousCore.plugin,0,20);
-        for(int i=0;i<=16;i++) {
+            }.runTaskTimer(LuminousCore.plugin, 0, 20);
+            for (int i = 0; i <= 16; i++) {
                 randomLocation = UtilizationMethods.getRandomLocation(player.getLocation(), 7);
                 WitherSkeleton witherSkeleton = (WitherSkeleton) player.getWorld().spawnEntity(randomLocation, EntityType.WITHER_SKELETON, false);
                 witherSkeleton.setInvulnerable(true);
@@ -70,7 +70,7 @@ public class SilentLament {
                     }
                 }.runTaskTimer(LuminousCore.plugin, 0, 20);
             }
-        }else {
+        } else {
             player.sendMessage("§cThis ability is on cooldown!");
         }
     }
