@@ -19,7 +19,8 @@ import java.util.HashMap;
 public class MysticalSeal {
     Location location;
     Location origin;
-    int j;
+    int j=0;
+    int i=0;
     Vector direction;
 
     public static HashMap<Player, Boolean> sealCooldown = new HashMap<Player, Boolean>();
@@ -35,26 +36,29 @@ public class MysticalSeal {
                 @Override
                 public void run() {
                     j++;
-                    if(j>=5){
+                    if (!(location.distance(origin) >= 15)) {
+
+
+                        UtilizationMethods.createTriangle(location, j * 0.5, Particle.END_ROD);
+                        location.add(direction.multiply(1));
+                        for (Entity entity : location.getWorld().getNearbyEntities(location, 2, 2, 2)) {
+                            if (entity instanceof LivingEntity) {
+                                if (entity != player) {
+                                    ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.05);
+                                    ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 4, 15));
+                                    ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 4, 15));
+                                }
+                            }
+                        }
+                    }
+                    if(j>=5*20){
                         sealCooldown.put(player,null);
                         j=0;
                         this.cancel();
                     }
                 }
-            }.runTaskTimer(LuminousCore.plugin,0,20);
-            for (int i = 0; i <= 20; i++) {
-                UtilizationMethods.createTriangle(location, i * 0.5, Particle.END_ROD);
-                location.add(direction.multiply(1));
-                for(Entity entity:location.getWorld().getNearbyEntities(location,2,2,2)){
-                    if(entity instanceof LivingEntity){
-                        if(entity!=player) {
-                            ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.05);
-                            ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 4, 15));
-                            ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 4, 15));
-                        }
-                    }
-                }
-            }
+            }.runTaskTimer(LuminousCore.plugin,0,1);
+
         }else {
             player.sendMessage("§cMysticalSeal is currently on cooldown.");
         }

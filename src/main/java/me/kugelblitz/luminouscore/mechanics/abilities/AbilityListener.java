@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
+import me.kugelblitz.luminouscore.mechanics.abilities.deltus.FieryAura;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.MysticalSeal;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.MeteorCrash;
@@ -31,6 +32,7 @@ public class AbilityListener implements Listener {
                                 player.sendMessage("§cYou need to choose a religion to use its ability!");
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+                                new FieryAura(player);
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
 
