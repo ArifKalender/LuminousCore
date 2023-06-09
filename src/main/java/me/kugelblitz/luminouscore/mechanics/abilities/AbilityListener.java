@@ -1,6 +1,8 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
+import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.MeteorCrash;
+import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SideRealistFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
@@ -22,7 +24,7 @@ public class AbilityListener implements Listener {
         if(player.getInventory().getItemInMainHand()!=null){
             if(player.getInventory().getItemInMainHand().getItemMeta()!=null) {
                 if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
-                    if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager"))
+                    if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon"))
 
                         if (player.isSneaking()) {
                             if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
@@ -30,7 +32,7 @@ public class AbilityListener implements Listener {
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
-
+                                new MeteorCrash(player);
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
                                 new SilentLament(player);
                             } else {
@@ -59,6 +61,8 @@ public class AbilityListener implements Listener {
         Player player = event.getPlayer();
         if(PlayerStats.getStats().get(player.getUniqueId()+".Info.Religion").equals("witherweaver")){
             new WitheristFaith(player);
+        }else if(PlayerStats.getStats().get(player.getUniqueId()+".Info.Religion").equals("siderealist")){
+            new SideRealistFaith(player);
         }
     }
 }

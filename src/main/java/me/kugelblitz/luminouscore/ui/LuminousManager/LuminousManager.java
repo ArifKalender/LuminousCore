@@ -28,7 +28,7 @@ public class LuminousManager implements Listener {
                 if (player.getInventory().getItemInMainHand() != null) {
                     if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
                         if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
-                            if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
+                            if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
                                 openGui(player);
                             }
                         }
@@ -39,7 +39,7 @@ public class LuminousManager implements Listener {
     }
 
     public void openGui(Player player) {
-        Inventory gui = Bukkit.createInventory(player, 9 * 3, "§3Luminous Manager");
+        Inventory gui = Bukkit.createInventory(player, 9 * 3, "§dCrystal Lexicon");
 
         ItemStack fill = new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1);
         ItemMeta fillMeta = fill.getItemMeta();
