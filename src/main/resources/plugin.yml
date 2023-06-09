@@ -1,5 +1,5 @@
 name: LuminousCore
-version: '0.0.5-ALPHA'
+version: '0.0.9-ALPHA'
 main: me.kugelblitz.luminouscore.LuminousCore
 api-version: 1.19
 authors: [ Kugelbltz ]
