@@ -25,9 +25,9 @@ public class LuminousManagerSetupTask {
                     this.cancel();
                 }
                 // Set the 9th hotbar slot to a nether star with the name "§bLuminous Manager"
-                ItemStack netherStar = new ItemStack(Material.NETHER_STAR);
+                ItemStack netherStar = new ItemStack(Material.ENCHANTED_BOOK);
                 ItemMeta meta = netherStar.getItemMeta();
-                meta.setDisplayName("§bLuminous Manager");
+                meta.setDisplayName("§dCrystal Lexicon");
                 netherStar.setItemMeta(meta);
                 inventory.setItem(8, netherStar);
 
@@ -35,9 +35,9 @@ public class LuminousManagerSetupTask {
                 for (int slot = 0; slot < inventory.getSize(); slot++) {
                     if (slot != 8) { // Skip the 9th hotbar slot
                         ItemStack item = inventory.getItem(slot);
-                        if (item != null && item.getType() == Material.NETHER_STAR &&
+                        if (item != null && item.getType() == Material.ENCHANTED_BOOK &&
                                 item.hasItemMeta() && item.getItemMeta().hasDisplayName() &&
-                                item.getItemMeta().getDisplayName().equals("§bLuminous Manager")) {
+                                item.getItemMeta().getDisplayName().equals("§dCrystal Lexicon")) {
                             inventory.setItem(slot, null);
                         }
                     }
