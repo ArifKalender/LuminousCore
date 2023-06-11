@@ -1,0 +1,31 @@
+name: LuminousCore
+version: '0.0.9-ALPHA'
+main: me.kugelblitz.luminouscore.LuminousCore
+api-version: 1.19
+authors: [ Kugelbltz ]
+description: Core plugin for Lumina.
+commands:
+  mayorhandler:
+    description: LuminousCore | Mayor Handling - Can only be executed by console.
+  currentmayor:
+    description: LuminousCore | Display the current mayor.
+  adminitem:
+    description: LuminousCore | Getting the custom items via command
+  reloadlumina:
+    description: LuminousCore | Reload LuminousCore
+  footprints:
+    description: LuminousCore | Cosmetic footprint changing
+  createitem:
+    description: LuminousCore | Modify item attributes via command. Available attributes; Health, damage, kbres, knockback, speed, attackspeed
+  spawncustommob:
+    description: LuminousCore | Spawning custom mobs. Available mobs; Alivestructure, disharmonicresonance, neuronfly, sentientcore, serenitydivider, gazesthewaves, harmonicresonance, quark
+  terminatemobs:
+    description: LuminousCore | Terminate custom mobs on the entire server. Recommended to use before & after restarts.
+  seteventlocation:
+    description: LuminousCore | Set location of certain events. Available events; Twilightresonance, silentshaman
+  openlexicon:
+    description: LuminousCore | TEMPORARY > Opens the Crystal Lexicon.
+  triggerevent:
+    description: LuminousCore | Trigger an event. Usage; /triggerevent <start/end> <twilightresonance/silentshaman>
+  resetplayer:
+    description: LuminousCore | Reset a player.
