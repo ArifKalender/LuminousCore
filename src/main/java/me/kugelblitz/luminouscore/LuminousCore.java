@@ -8,10 +8,7 @@ import me.kugelblitz.luminouscore.custom.custommobs.MobListener;
 import me.kugelblitz.luminouscore.mechanics.abilities.AbilityListener;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.CurrentMayor;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.MayorHandler;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.DaithiMayorM;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.FionaMayorF;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MoragMayorF;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.MuirgenMayorF;
+import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.*;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.BeforeReligion;
 import me.kugelblitz.luminouscore.mechanics.religionmanager.ReligionListener;
 import me.kugelblitz.luminouscore.statmanagement.CustomDamageManager;
@@ -82,6 +79,7 @@ public final class LuminousCore extends JavaPlugin {
     public void regularListeners() {
         getServer().getPluginManager().registerEvents(new DaithiMayorM(), this);
         getServer().getPluginManager().registerEvents(new MuirgenMayorF(), this);
+        getServer().getPluginManager().registerEvents(new SeanMayorM(), this);
         getServer().getPluginManager().registerEvents(new FionaMayorF(), this);
         getServer().getPluginManager().registerEvents(new MoragMayorF(), this);
 

@@ -39,12 +39,12 @@ public class MysticalSeal {
                     if (!(location.distance(origin) >= 15)) {
 
 
-                        UtilizationMethods.createTriangle(location, j * 0.5, Particle.END_ROD);
+                        UtilizationMethods.createTriangle(location, 0.3*j, Particle.END_ROD);
                         location.add(direction.multiply(1));
                         for (Entity entity : location.getWorld().getNearbyEntities(location, 2, 2, 2)) {
                             if (entity instanceof LivingEntity) {
                                 if (entity != player) {
-                                    ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.05);
+                                    ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.05 );
                                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 4, 15));
                                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 4, 15));
                                 }
