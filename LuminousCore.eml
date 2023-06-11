@@ -5,6 +5,7 @@
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
+	<contentEntry url="file://$MODULE_DIR$"/>
 	<lib name="Maven: org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT" scope="PROVIDED"/>
 	<lib name="Maven: com.google.guava:guava:31.1-jre" scope="PROVIDED"/>
 	<lib name="Maven: com.google.guava:failureaccess:1.0.1" scope="PROVIDED"/>
