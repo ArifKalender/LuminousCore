@@ -29,7 +29,7 @@ public class SilentLament {
                     if (cd >= 120) {
                         silentLamentCooldown.put(player, null);
                         this.cancel();
-                        player.sendMessage("§aSilentShaman is available.");
+                        player.sendMessage("§aSilent Lament is now available.");
                     }
                 }
             }.runTaskTimer(LuminousCore.plugin, 0, 20);

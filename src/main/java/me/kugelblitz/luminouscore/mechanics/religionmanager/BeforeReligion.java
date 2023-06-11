@@ -24,24 +24,23 @@ public class BeforeReligion implements Listener {
                 if(player.getInventory().getItemInMainHand()!=null){
                     if (player.getInventory().getItemInMainHand().getItemMeta()!=null){
                         if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName()!=null){
+                            if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
+                                if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion") == null) {
+                                    openLexicon(player);
+                                } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+                                    new AfterReligion().openGui(player);
+                                } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+                                    new AfterReligion().openGui(player);
 
-                            if(PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion")==null){
-                                openLexicon(player);
+                                } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
+                                    new AfterReligion().openGui(player);
+
+                                } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
+                                    new AfterReligion().openGui(player);
+
+                                }
+
                             }
-                            else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
-                                new AfterReligion().openGui(player);
-                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
-                                new AfterReligion().openGui(player);
-
-                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
-                                new AfterReligion().openGui(player);
-
-                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
-                                new AfterReligion().openGui(player);
-
-                            }
-
-
                         }
                     }
                 }
