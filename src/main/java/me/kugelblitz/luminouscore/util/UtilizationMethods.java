@@ -109,9 +109,8 @@ public class UtilizationMethods {
         return null;
     }
 
-    @Deprecated
     public static ItemStack getPlayerHead(OfflinePlayer player) {
-        ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1, (short) SkullType.PLAYER.ordinal());
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
         meta.setOwningPlayer(player);
         return head;

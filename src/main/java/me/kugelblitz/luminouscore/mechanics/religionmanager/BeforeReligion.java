@@ -1,6 +1,5 @@
 package me.kugelblitz.luminouscore.mechanics.religionmanager;
 
-import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -28,16 +27,9 @@ public class BeforeReligion implements Listener {
                                 if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion") == null) {
                                     openLexicon(player);
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
-                                    new AfterReligion().openGui(player);
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
-                                    new AfterReligion().openGui(player);
-
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
-                                    new AfterReligion().openGui(player);
-
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
-                                    new AfterReligion().openGui(player);
-
                                 }
 
                             }

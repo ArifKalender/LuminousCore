@@ -3,17 +3,23 @@ package me.kugelblitz.luminouscore.util;
 import me.kugelblitz.luminouscore.LuminousCore;
 import me.kugelblitz.luminouscore.custom.customitems.items.CorruptedHeart;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
-import me.kugelblitz.luminouscore.ui.LuminousManager.LuminousManagerSetupTask;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Arrays;
 import java.util.UUID;
+
+import static me.kugelblitz.luminouscore.LuminousCore.plugin;
 
 public class NullFixer implements Listener {
 
@@ -39,32 +45,42 @@ public class NullFixer implements Listener {
             PlayerStats.saveStats();
 
         }
+        event.getPlayer().setHealthScale(40);
+        event.getPlayer().setHealthScaled(true);
         PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
-        LuminousManagerSetupTask setupTask = new LuminousManagerSetupTask(event.getPlayer());
-        setupTask.start();
         event.getPlayer().setHealth(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         CorruptedHeart.healcd.put(event.getPlayer(), false);
 
         Player player = event.getPlayer();
         player.setHealthScale(40);
         new BukkitRunnable() {
-
             @Override
             public void run() {
-                i++;
+                ItemStack[] inventoryContents = player.getInventory().getContents();
 
-                if (i <= 4) {
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 30, 255, false));
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 255, false));
-                    player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                for (int slot = 0; slot < inventoryContents.length; slot++) {
+                    if (slot == 8) {
+                        ItemStack item = new ItemStack(Material.ENCHANTED_BOOK);
+                        ItemMeta itemMeta = item.getItemMeta();
+                        itemMeta.setDisplayName("§dCrystal Lexicon");
+                        itemMeta.setLore(Arrays.asList("","The guide that will help you","through your journey!"));
+                        item.setItemMeta(itemMeta);
+                        player.getInventory().setItem(8,item);
+                    } else {
+
+                        ItemStack item = inventoryContents[slot];
+
+                        if (item != null && item.getType() != Material.AIR) {
+                            ItemMeta meta = item.getItemMeta();
+                            if (meta != null && meta.hasDisplayName() && meta.getDisplayName().equals("§dCrystal Lexicon")) {
+                                player.getInventory().setItem(slot, null); // Remove the item
+                            }
+                        }
+                    }
                 }
-                if (i >= 10) {
-                    CorruptedHeart.healcd.put(player, false);
-                    i = 0;
-                    this.cancel();
-                }
+
             }
-        }.runTaskTimer(LuminousCore.plugin, 1, 20);
+        }.runTaskTimer(plugin, 0, 20); // Replace 'plugin' with your reference to the plugin instance
 
     }
 }

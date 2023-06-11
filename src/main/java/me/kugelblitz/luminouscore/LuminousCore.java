@@ -15,7 +15,7 @@ import me.kugelblitz.luminouscore.statmanagement.CustomDamageManager;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import me.kugelblitz.luminouscore.ui.ClickEvent;
 import me.kugelblitz.luminouscore.ui.FootprintMenu;
-import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
+import me.kugelblitz.luminouscore.ui.crystallexicon.CrystalListener;
 import me.kugelblitz.luminouscore.util.NullFixer;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import me.kugelblitz.luminouscore.util.commands.*;
@@ -37,7 +37,6 @@ public final class LuminousCore extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         MayorHandler.mayor = getConfig().getString("mayor");
-        new AfterReligion();
         addFields();
         checkLicense();
     }
@@ -94,6 +93,7 @@ public final class LuminousCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
         getServer().getPluginManager().registerEvents(new NullFixer(), this);
+        getServer().getPluginManager().registerEvents(new CrystalListener(), this);
 
         new Regeneration().regenerate();
         new Regeneration().indicate();

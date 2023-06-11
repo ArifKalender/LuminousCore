@@ -1,7 +1,8 @@
 package me.kugelblitz.luminouscore.ui;
 
-import me.kugelblitz.luminouscore.ui.LuminousManager.AfterReligion;
+import me.kugelblitz.luminouscore.ui.crystallexicon.CrystalLexicon;
 import me.kugelblitz.luminouscore.util.PlayerStats;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -52,9 +53,9 @@ public class ClickEvent implements Listener {
                 event.getWhoClicked().sendMessage("§aSet your footprint to §9ELECTRIC§a!");
                 PlayerStats.saveStats();
                 event.setCancelled(true);
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§9Your Skills")) {
                 event.setCancelled(true);
-                new AfterReligion().openGui((Player) event.getWhoClicked());
+                Bukkit.getServer().dispatchCommand(event.getWhoClicked(), "skills");
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dEnder Chest")) {
                 event.setCancelled(true);
                 event.getWhoClicked().openInventory(event.getWhoClicked().getEnderChest());
@@ -64,6 +65,9 @@ public class ClickEvent implements Listener {
                 event.setCancelled(true);
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7§lLumina")) {
                 event.setCancelled(true);
+            }else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
+                event.setCancelled(true);
+                new CrystalLexicon((Player)event.getWhoClicked());
             }
         }
 
@@ -77,9 +81,9 @@ public class ClickEvent implements Listener {
         if (itemStack != null) {
             if (itemStack.getItemMeta() != null) {
                 if (itemStack.getItemMeta().getDisplayName() != null) {
-                    if (itemStack.getItemMeta().getDisplayName().equalsIgnoreCase("§bLuminous Manager")) {
+                    if (itemStack.getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
+                        new CrystalLexicon(player);
                         event.setCancelled(true);
-                        new AfterReligion().openGui(player);
                     }
                 }
             }
