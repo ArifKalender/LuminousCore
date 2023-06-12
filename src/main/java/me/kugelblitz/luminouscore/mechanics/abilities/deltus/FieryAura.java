@@ -13,13 +13,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 
 public class FieryAura {
-    public static HashMap<Player,Boolean> fieryAuraCooldown=new HashMap<Player,Boolean>();
-    int i=0;
+    public static HashMap<Player, Boolean> fieryAuraCooldown = new HashMap<Player, Boolean>();
+    int i = 0;
     Location location;
+
     public FieryAura(Player player) {
         if (fieryAuraCooldown.get(player) == null) {
             location = player.getLocation();
-            fieryAuraCooldown.put(player,true);
+            fieryAuraCooldown.put(player, true);
             new BukkitRunnable() {
                 @Override
                 public void run() {
@@ -39,13 +40,13 @@ public class FieryAura {
 
                     if (i >= 4 * 90) {
                         i = 0;
-                        fieryAuraCooldown.put(player,null);
+                        fieryAuraCooldown.put(player, null);
                         player.sendMessage("§aFieryAura is now available.");
                         this.cancel();
                     }
                 }
             }.runTaskTimer(LuminousCore.plugin, 0, 5);
-        }else{
+        } else {
             player.sendMessage("§cFieryAura is currently on cooldown.");
         }
     }

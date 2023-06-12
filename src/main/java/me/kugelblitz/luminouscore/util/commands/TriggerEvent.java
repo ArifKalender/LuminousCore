@@ -12,7 +12,7 @@ public class TriggerEvent implements CommandExecutor {
     Location twilightlocation;
 
     @Override
-    public boolean onCommand( CommandSender sender, Command command, String label,  String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (sender.hasPermission("luminouscore.admin.triggerevent")) {
             if (args.length > 1) {

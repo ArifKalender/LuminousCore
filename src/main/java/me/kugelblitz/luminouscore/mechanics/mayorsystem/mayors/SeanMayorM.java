@@ -62,7 +62,7 @@ public class SeanMayorM implements Listener {
                     event.getBlock().getDrops().add(new ItemStack(Material.RAW_GOLD, 1));
                 }
             }
-            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,20*20,0,true));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 20, 0, true));
         }
     }
 

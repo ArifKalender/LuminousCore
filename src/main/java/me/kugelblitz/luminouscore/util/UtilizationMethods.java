@@ -9,7 +9,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -124,8 +123,8 @@ public class UtilizationMethods {
 
     public void createSerenity(Location origin, double radius, Particle particle) {
         new BukkitRunnable() {
-            private double currentRadius = 0.0;
             private final double radiusIncrement = 0.1; // Adjust the increment value as desired
+            private double currentRadius = 0.0;
 
             @Override
             public void run() {

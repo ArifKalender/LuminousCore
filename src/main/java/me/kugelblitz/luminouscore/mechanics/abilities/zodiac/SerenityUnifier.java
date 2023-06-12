@@ -13,10 +13,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 
 public class SerenityUnifier {
-    public static HashMap<Player,Boolean> serenityUnifierCooldown = new HashMap<Player,Boolean>();
-    private int i=0;
-    private int cd=0;
+    public static HashMap<Player, Boolean> serenityUnifierCooldown = new HashMap<Player, Boolean>();
+    private int i = 0;
+    private int cd = 0;
     private Location location;
+
     public SerenityUnifier(Player player) {
         if (serenityUnifierCooldown.get(player) == null) {
             serenityUnifierCooldown.put(player, true);
@@ -48,18 +49,18 @@ public class SerenityUnifier {
                 }
             }.runTaskTimer(LuminousCore.plugin, 0, 6 * 20);
 
-            new BukkitRunnable(){
+            new BukkitRunnable() {
                 @Override
                 public void run() {
                     cd++;
-                    if(cd>=120){
-                        serenityUnifierCooldown.put(player,null);
+                    if (cd >= 120) {
+                        serenityUnifierCooldown.put(player, null);
                         player.sendMessage("§aSerenityUnifier is now available.");
                         this.cancel();
                     }
                 }
-            }.runTaskTimer(LuminousCore.plugin,0,20);
-        }else{
+            }.runTaskTimer(LuminousCore.plugin, 0, 20);
+        } else {
             player.sendMessage("§cSerenityUnifier is currently on cooldown.");
         }
     }

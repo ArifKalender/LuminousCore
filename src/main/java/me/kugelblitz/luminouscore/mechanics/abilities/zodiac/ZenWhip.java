@@ -9,21 +9,23 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 public class ZenWhip {
+    Location location;
+    Vector direction;
 
-    public ZenWhip(Player player){
-
-        Location location=player.getEyeLocation();
-        Vector direction = location.getDirection();
-        for(int i=0;i<=30;i++){
+    public ZenWhip(Player player) {
+        location = player.getEyeLocation();
+        direction = location.getDirection();
+        for (int i = 0; i <= 30; i++) {
             location.add(direction.multiply(1));
-            location.getWorld().spawnParticle(Particle.SOUL,location,3,0,0,0,0.1);
-            for(Entity entity:location.getWorld().getNearbyEntities(location,1,1,1)){
-                if(entity instanceof LivingEntity){
-                    ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()*0.01);
+            location.getWorld().spawnParticle(Particle.SOUL, location, 3, 0, 0, 0, 0.05);
+            for (Entity entity : location.getWorld().getNearbyEntities(location, 1, 1, 1)) {
+                if (entity instanceof LivingEntity) {
+                    if (!(entity instanceof Player)) {
+                        ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.01);
+                    }
                 }
             }
         }
 
     }
-
 }

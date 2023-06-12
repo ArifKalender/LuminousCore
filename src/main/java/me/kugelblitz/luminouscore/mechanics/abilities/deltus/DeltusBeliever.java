@@ -8,17 +8,17 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class DeltusBeliever {
 
-    public DeltusBeliever(Player player){
-        new BukkitRunnable(){
+    public DeltusBeliever(Player player) {
+        new BukkitRunnable() {
             @Override
             public void run() {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,65,2));
-                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,65,0));
-                if(!player.isOnline()){
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 65, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 65, 0));
+                if (!player.isOnline()) {
                     this.cancel();
                 }
             }
-        }.runTaskTimer(LuminousCore.plugin,0,60);
+        }.runTaskTimer(LuminousCore.plugin, 0, 60);
     }
 
 }

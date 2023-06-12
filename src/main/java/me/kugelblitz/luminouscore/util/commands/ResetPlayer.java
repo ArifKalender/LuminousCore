@@ -13,17 +13,17 @@ public class ResetPlayer implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if(sender instanceof Player){
+        if (sender instanceof Player) {
             Player player = (Player) sender;
-            if(player.hasPermission("luminouscore.resetplayer")) {
+            if (player.hasPermission("luminouscore.resetplayer")) {
                 if (args.length > 0) {
-                    if(Bukkit.getPlayer(args[0]).isOnline()){
+                    if (Bukkit.getPlayer(args[0]).isOnline()) {
                         player.setAbsorptionAmount(0);
                     }
                 } else {
                     player.setAbsorptionAmount(0);
                 }
-            }else {
+            } else {
                 player.sendMessage("§cYou don't have enough permission to use this command.");
             }
         }

@@ -12,12 +12,12 @@ public class CrystalListener implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)){
-            if (player.getInventory()!=null){
-                if(player.getInventory().getItemInMainHand()!=null){
-                    if (player.getInventory().getItemInMainHand().getItemMeta()!=null){
-                        if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName()!=null){
-                            if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
+        if ((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            if (player.getInventory() != null) {
+                if (player.getInventory().getItemInMainHand() != null) {
+                    if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
+                        if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
+                            if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon")) {
                                 if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion") == null) {
                                     new CrystalLexicon(player);
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
@@ -28,7 +28,7 @@ public class CrystalListener implements Listener {
                                     new CrystalLexicon(player);
                                 } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
                                     new CrystalLexicon(player);
-                                }else {
+                                } else {
                                     new RCrystalLexicon(player);
                                 }
 
