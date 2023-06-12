@@ -22,6 +22,7 @@ public class CrystalLexicon {
         ItemStack fill = new ItemStack(Material.GRAY_STAINED_GLASS_PANE,1);
         ItemMeta fillMeta = fill.getItemMeta();
         fillMeta.setDisplayName("§7§lLumina");
+        fill.setItemMeta(fillMeta);
         for(int i=0;i<27;i++){
             gui.setItem(i,fill);
         }

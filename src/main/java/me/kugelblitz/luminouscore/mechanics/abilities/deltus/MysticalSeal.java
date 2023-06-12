@@ -39,7 +39,7 @@ public class MysticalSeal {
                     if (!(location.distance(origin) >= 15)) {
 
 
-                        UtilizationMethods.createTriangle(location, 0.3*j, Particle.END_ROD);
+                        UtilizationMethods.createSemiCircle(location, 0.3*j, Particle.END_ROD,location.getDirection());
                         location.add(direction.multiply(1));
                         for (Entity entity : location.getWorld().getNearbyEntities(location, 2, 2, 2)) {
                             if (entity instanceof LivingEntity) {

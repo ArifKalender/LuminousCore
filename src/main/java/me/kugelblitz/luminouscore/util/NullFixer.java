@@ -8,6 +8,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.inventory.ItemStack;
@@ -25,7 +26,7 @@ public class NullFixer implements Listener {
 
     int i = 0;
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerLoginEvent event) {
         UUID uuid = event.getPlayer().getUniqueId();
 
@@ -47,7 +48,6 @@ public class NullFixer implements Listener {
         }
         event.getPlayer().setHealthScale(40);
         event.getPlayer().setHealthScaled(true);
-        PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
         event.getPlayer().setHealth(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         CorruptedHeart.healcd.put(event.getPlayer(), false);
 

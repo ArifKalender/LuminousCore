@@ -9,6 +9,7 @@ import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SideRealistFai
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,6 +37,7 @@ public class AbilityListener implements Listener {
                                 new FieryAura(player);
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+                                new SerenityUnifier(player);
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
                                 new MeteorCrash(player);

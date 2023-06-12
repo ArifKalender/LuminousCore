@@ -1,10 +1,12 @@
 package me.kugelblitz.luminouscore.util;
 
+import me.kugelblitz.luminouscore.LuminousCore;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.net.InetSocketAddress;
@@ -101,13 +103,6 @@ public class UtilizationMethods {
         return nearbyPlayers;
     }
 
-    public static String getPlayerIPAddress(Player player) {
-        InetSocketAddress address = player.getAddress();
-        if (address != null) {
-            return address.getAddress().getHostAddress();
-        }
-        return null;
-    }
 
     public static ItemStack getPlayerHead(OfflinePlayer player) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1);
@@ -116,49 +111,41 @@ public class UtilizationMethods {
         return head;
     }
 
-
-
-
-
-
-
-    public static void createTriangle(Location middle, double size, Particle particle) {
-        // Calculate the offset based on the size
-        double offset = size / 2;
-
-        // Calculate the corner points of the triangle
-        Location point1 = middle.clone().add(0, offset, -offset);
-        Location point2 = middle.clone().add(-offset, offset, offset);
-        Location point3 = middle.clone().add(offset, offset, offset);
-
-        // Generate the particles for each side of the triangle
-        generateParticlesBetweenPoints(point1, point2, particle);
-        generateParticlesBetweenPoints(point2, point3, particle);
-        generateParticlesBetweenPoints(point3, point1, particle);
-    }
-
-    private static  void generateParticlesBetweenPoints(Location start, Location end, Particle particle) {
-        // Calculate the distance between the two points
-        double distance = start.distance(end);
-
-        // Calculate the number of particles to generate based on the distance
-        int particleCount = (int) Math.ceil(distance);
-
-        // Calculate the direction vector between the two points
-        double directionX = (end.getX() - start.getX()) / distance;
-        double directionY = (end.getY() - start.getY()) / distance;
-        double directionZ = (end.getZ() - start.getZ()) / distance;
-
-        // Generate particles along the line between the two points
-        for (int i = 0; i <= particleCount; i++) {
-            double offsetX = directionX * i;
-            double offsetY = directionY * i;
-            double offsetZ = directionZ * i;
-
-            Location particleLocation = start.clone().add(offsetX, offsetY, offsetZ);
-            particleLocation.getWorld().spawnParticle(particle, particleLocation, 1,0,0,0,0);
+    public static void createSemiCircle(Location location, Double size, Particle particle, Vector direction) {
+        Vector ortho = new Vector(-direction.getZ(), 0, direction.getX()).normalize();
+        for (double i = 0; i <= Math.PI; i += Math.PI / 50) {
+            double x = size * Math.cos(i);
+            double z = size * Math.sin(i);
+            location.add(direction.clone().multiply(x)).add(ortho.clone().multiply(z));
+            location.getWorld().spawnParticle(particle, location, 0);
+            location.subtract(direction.clone().multiply(x)).subtract(ortho.clone().multiply(z));
         }
     }
 
+    public void createSerenity(Location origin, double radius, Particle particle) {
+        new BukkitRunnable() {
+            private double currentRadius = 0.0;
+            private final double radiusIncrement = 0.1; // Adjust the increment value as desired
 
+            @Override
+            public void run() {
+                if (currentRadius <= radius) {
+                    // Generate circle particles
+                    for (double theta = 0; theta < 2 * Math.PI; theta += Math.PI / 30) {
+                        double x = origin.getX() + currentRadius * Math.cos(theta);
+                        double y = origin.getY();
+                        double z = origin.getZ() + currentRadius * Math.sin(theta);
+                        origin.getWorld().spawnParticle(particle, x, y, z, 0, 0, 0, 0, 0.05);
+                    }
+
+                    currentRadius += radiusIncrement;
+                } else {
+                    // Circle reached desired radius, cancel the task
+                    this.cancel();
+                }
+            }
+        }.runTaskTimer(LuminousCore.plugin, 0L, 1L); // Adjust the task timing as desired
+
+
+    }
 }
