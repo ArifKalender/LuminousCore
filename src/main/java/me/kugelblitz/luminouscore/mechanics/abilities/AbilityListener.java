@@ -20,6 +20,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class AbilityListener implements Listener {
 
 
+
     @EventHandler
     public void onLeftClick(PlayerAnimationEvent event) {
         Player player = event.getPlayer();
