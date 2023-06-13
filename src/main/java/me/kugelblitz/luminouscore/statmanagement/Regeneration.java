@@ -83,15 +83,22 @@ public class Regeneration {
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     UUID uuid = player.getUniqueId();
-                    String health = String.valueOf((int) player.getHealth());
+                    String health = String.valueOf((int) player.getHealth()+(int)player.getAbsorptionAmount());
                     String maxHealth = String.valueOf((int) player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
                     if (mana.get(player) == null) {
                         mana.put(player, 100.0);
                     }
                     int manaInt = (int) mana.get(player).doubleValue();
                     int maxMana = (int) PlayerStats.getStats().get(uuid + ".Stats.Intelligence");
-                    String text = "§cHealth: " + health + "§4/§c" + maxHealth + "        §bMana: " + manaInt + "§9/" + "§b" + maxMana;
-                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(text));
+                    if(player.getAbsorptionAmount()>0){
+                        String text = "§6Health: §6" + health + "§e/§6" + maxHealth + "        §bMana: " + manaInt + "§9/" + "§b" + maxMana;
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(text));
+                    }
+                    else {
+                        String text = "§cHealth: " + health + "§4/§c" + maxHealth + "        §bMana: " + manaInt + "§9/" + "§b" + maxMana;
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(text));
+
+                    }
                 }
             }
         }.runTaskTimer(LuminousCore.plugin, 20, 20);
