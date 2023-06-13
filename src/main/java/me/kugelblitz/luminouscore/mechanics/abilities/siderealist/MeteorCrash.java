@@ -30,7 +30,7 @@ public class MeteorCrash {
                     Location explosionLocation = new Location(location.getWorld(), location.getX(), location.getY() + 20, location.getZ());
                     ArmorStand meteor = (ArmorStand) explosionLocation.getWorld().spawnEntity(explosionLocation, EntityType.ARMOR_STAND, false);
                     meteor.setInvisible(true);
-                    meteor.getEquipment().setHelmet(new ItemStack(Material.OBSIDIAN, 1));
+                    meteor.getEquipment().setHelmet(new ItemStack(Material.MAGMA_BLOCK, 1));
                     new BukkitRunnable() {
                         @Override
                         public void run() {

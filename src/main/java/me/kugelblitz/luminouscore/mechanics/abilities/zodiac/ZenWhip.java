@@ -17,9 +17,9 @@ public class ZenWhip {
         direction = location.getDirection();
         for (int i = 0; i <= 30; i++) {
             location.add(direction.multiply(1));
-            location.getWorld().spawnParticle(Particle.SOUL, location, 3, 0, 0, 0, 0.05);
+            location.getWorld().spawnParticle(Particle.END_ROD, location, 3, 0, 0, 0, 0.05);
             for (Entity entity : location.getWorld().getNearbyEntities(location, 1, 1, 1)) {
-                if (entity instanceof LivingEntity) {
+                    if (entity instanceof LivingEntity) {
                     if (!(entity instanceof Player)) {
                         ((LivingEntity) entity).damage(((LivingEntity) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.01);
                     }

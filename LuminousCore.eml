@@ -2,10 +2,11 @@
 <component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
 	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
 	<contentEntry url="file://$MODULE_DIR$">
-		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<contentEntry url="file://$MODULE_DIR$"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
 	<lib name="Maven: org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT" scope="PROVIDED"/>
 	<lib name="Maven: com.google.guava:guava:31.1-jre" scope="PROVIDED"/>
 	<lib name="Maven: com.google.guava:failureaccess:1.0.1" scope="PROVIDED"/>

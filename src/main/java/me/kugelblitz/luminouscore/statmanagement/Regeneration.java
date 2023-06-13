@@ -58,10 +58,18 @@ public class Regeneration {
 
                     //health regen v mana regen ^
                     if (!player.isDead()) {
-                        if (player.getHealth() >= player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.98) {
-                            player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-                        } else {
-                            player.setHealth(player.getHealth() + player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.01);
+                        if(PlayerStats.getStats().get(uuid+".Info.Religion")!="zodiac") {
+                            if (player.getHealth() >= player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.98) {
+                                player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                            } else {
+                                player.setHealth(player.getHealth() + player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.01);
+                            }
+                        }else {
+                            if (player.getHealth() >= player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.95) {
+                                player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                            } else {
+                                player.setHealth(player.getHealth() + player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.03);
+                            }
                         }
                     }
                 }

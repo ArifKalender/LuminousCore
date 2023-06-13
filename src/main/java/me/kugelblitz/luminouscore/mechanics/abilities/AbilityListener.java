@@ -9,6 +9,7 @@ import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SideRealistFai
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.DoubleRegeneration;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.ZenWhip;
 import me.kugelblitz.luminouscore.util.PlayerStats;
@@ -72,7 +73,7 @@ public class AbilityListener implements Listener {
         } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
             new SideRealistFaith(player);
         } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
-
+            new DoubleRegeneration(player);
         } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
             new DeltusBeliever(player);
         } else {
