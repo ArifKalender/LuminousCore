@@ -1,19 +1,16 @@
 package me.kugelblitz.luminouscore.util;
 
-import me.kugelblitz.luminouscore.LuminousCore;
 import me.kugelblitz.luminouscore.custom.customitems.items.CorruptedHeart;
 import me.kugelblitz.luminouscore.statmanagement.Regeneration;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
@@ -25,7 +22,7 @@ public class NullFixer implements Listener {
 
     int i = 0;
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerLoginEvent event) {
         UUID uuid = event.getPlayer().getUniqueId();
 
@@ -47,7 +44,6 @@ public class NullFixer implements Listener {
         }
         event.getPlayer().setHealthScale(40);
         event.getPlayer().setHealthScaled(true);
-        PlayerStats.getStats().set(uuid + ".Info.IpAddress", UtilizationMethods.getPlayerIPAddress(event.getPlayer()));
         event.getPlayer().setHealth(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         CorruptedHeart.healcd.put(event.getPlayer(), false);
 
@@ -63,9 +59,9 @@ public class NullFixer implements Listener {
                         ItemStack item = new ItemStack(Material.ENCHANTED_BOOK);
                         ItemMeta itemMeta = item.getItemMeta();
                         itemMeta.setDisplayName("§dCrystal Lexicon");
-                        itemMeta.setLore(Arrays.asList("","The guide that will help you","through your journey!"));
+                        itemMeta.setLore(Arrays.asList("", "The guide that will help you", "through your journey!"));
                         item.setItemMeta(itemMeta);
-                        player.getInventory().setItem(8,item);
+                        player.getInventory().setItem(8, item);
                     } else {
 
                         ItemStack item = inventoryContents[slot];

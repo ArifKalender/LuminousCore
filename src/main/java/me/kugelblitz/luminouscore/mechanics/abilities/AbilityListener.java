@@ -9,6 +9,9 @@ import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SideRealistFai
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.DoubleRegeneration;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.ZenWhip;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,13 +32,14 @@ public class AbilityListener implements Listener {
                     if (player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§dCrystal Lexicon"))
 
                         if (player.isSneaking()) {
-                            if(PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion")==null){
+                            if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion") == null) {
                                 player.sendMessage("§cYou need to choose a religion to use its ability!");
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
                                 new FieryAura(player);
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+                                new SerenityUnifier(player);
 
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
                                 new MeteorCrash(player);
@@ -43,13 +47,12 @@ public class AbilityListener implements Listener {
                                 new SilentLament(player);
                             }
                         } else {
-                            if(PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion")==null){
+                            if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion") == null) {
                                 player.sendMessage("§cYou need to choose a religion to use its ability!");
-                            }
-                            else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+                            } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
                                 new MysticalSeal(player);
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
-
+                                new ZenWhip(player);
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
                                 new CelestialVitality(player);
                             } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
@@ -69,11 +72,11 @@ public class AbilityListener implements Listener {
             new WitheristFaith(player);
         } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
             new SideRealistFaith(player);
-        }else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
-
-        }else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+        } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+            new DoubleRegeneration(player);
+        } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
             new DeltusBeliever(player);
-        }else {
+        } else {
 
         }
     }
