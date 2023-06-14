@@ -13,9 +13,11 @@ import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.DoubleRegeneration;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.ZenWhip;
 import me.kugelblitz.luminouscore.util.PlayerStats;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
@@ -78,6 +80,15 @@ public class AbilityListener implements Listener {
             new DeltusBeliever(player);
         } else {
 
+        }
+    }
+
+    @EventHandler
+    public void onHungerChange(FoodLevelChangeEvent event){
+        if(event.getEntity() instanceof Player){
+            event.setCancelled(true);
+            HumanEntity player=event.getEntity();
+            player.setFoodLevel(20);
         }
     }
 }
