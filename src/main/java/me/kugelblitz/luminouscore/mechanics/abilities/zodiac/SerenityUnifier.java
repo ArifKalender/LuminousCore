@@ -35,7 +35,7 @@ public class SerenityUnifier {
                     location = player.getLocation();
                     new UtilizationMethods().createSerenity(location, 7, Particle.TOTEM);
                     for (Entity entity : location.getWorld().getNearbyEntities(location, 6, 2, 6)) {
-                        if (entity instanceof LivingEntity) {
+                        if (entity instanceof Player) {
                             new UtilizationMethods().createSerenity(entity.getLocation(), 1, Particle.HEART);
                             LivingEntity livingEntity = (LivingEntity) entity;
 

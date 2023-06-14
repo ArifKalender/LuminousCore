@@ -1,6 +1,7 @@
 package me.kugelblitz.luminouscore.cosmetic;
 
 import me.kugelblitz.luminouscore.util.PlayerStats;
+import me.kugelblitz.luminouscore.util.UtilizationMethods;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,6 +31,8 @@ public class Footprint implements Listener {
                     playParticle(player, Particle.GLOW);
                 } else if (particle.equals("soul")) {
                     playParticle(player, Particle.SOUL);
+                } else if (particle.equalsIgnoreCase("totem")) {
+                    new UtilizationMethods().createSerenity(player.getLocation(),2,Particle.TOTEM);
                 }
             }
         }

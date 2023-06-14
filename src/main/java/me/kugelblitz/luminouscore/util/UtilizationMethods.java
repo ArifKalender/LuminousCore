@@ -61,7 +61,7 @@ public class UtilizationMethods {
         }
     }
 
-    public static Location getLeftSide(Location location, double distance) {
+    public static Location getLeftSide(Location location,double distance) {
         Vector direction = location.getDirection().normalize().multiply(-1); // Get the opposite direction
         Vector leftSide = new Vector(direction.getZ(), 0, -direction.getX()).normalize().multiply(distance);
         return location.clone().add(leftSide);
