@@ -20,7 +20,6 @@ public class MysticalSeal {
     Location location;
     Location origin;
     int j = 0;
-    int i = 0;
     Vector direction;
 
     public MysticalSeal(Player player) {

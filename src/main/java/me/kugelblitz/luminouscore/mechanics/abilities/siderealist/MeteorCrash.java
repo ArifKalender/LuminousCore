@@ -4,9 +4,8 @@ import me.kugelblitz.luminouscore.LuminousCore;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -21,7 +20,7 @@ public class MeteorCrash {
 
     public MeteorCrash(Player player) {
         if (meteorCd.get(player) == null) {
-            location = player.getLocation();
+            location = player.getEyeLocation();
             for (int i = 0; i <= 15; i++) {
                 meteorCd.put(player, true);
                 location.add(location.getDirection());
@@ -34,18 +33,30 @@ public class MeteorCrash {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            meteor.getWorld().spawnParticle(Particle.FLAME, meteor.getLocation(), 15, 1f, 1f, 1f, 0.05f);
+                            if(!meteor.isDead()) {
+                                meteor.getWorld().spawnParticle(Particle.FLAME, meteor.getLocation(), 15, 1f, 1f, 1f, 0.05f);
+                            }
                             j++;
-                            if (j >= 90 * 20) {
+                            if (j >= 30 * 20) {
                                 j = 0;
+                                meteorCd.put(player,null);
+                                player.sendMessage("§aMeteorCrash is now available.");
                                 meteor.remove();
                                 this.cancel();
                             }
                             if (meteor.isOnGround()) {
-                                meteor.getWorld().createExplosion(location, 4f, false);
-                                meteor.remove();
-                                j = 0;
-                                this.cancel();
+                                if(!meteor.isDead()) {
+                                    meteor.getWorld().createExplosion(meteor.getLocation(), 4f, false);
+                                    for(Entity entity:meteor.getNearbyEntities(5,5,5)){
+                                        if(entity instanceof LivingEntity){
+                                            if(!(entity instanceof Player)){
+                                                ((LivingEntity) entity).damage(player.getLevel()*1000);
+                                            }
+                                        }
+                                    }
+                                    meteor.remove();
+                                    j = 0;
+                                }
                             }
                         }
                     }.runTaskTimer(LuminousCore.plugin, 0, 1);

@@ -71,7 +71,7 @@ public class SilentLament {
                 }.runTaskTimer(LuminousCore.plugin, 0, 20);
             }
         } else {
-            player.sendMessage("§cThis ability is on cooldown!");
+            player.sendMessage("§cSilentLament is on cooldown.");
         }
     }
 
