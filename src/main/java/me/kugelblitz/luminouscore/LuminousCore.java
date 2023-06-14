@@ -83,7 +83,7 @@ public final class LuminousCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MoragMayorF(), this);
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
-        getServer().getPluginManager().registerEvents(new AbilityManager(plugin), this);
+        getServer().getPluginManager().registerEvents(new AbilityManager(), this);
         getServer().getPluginManager().registerEvents(new ReligionListener(), this);
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
