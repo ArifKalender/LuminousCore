@@ -41,16 +41,24 @@ public class CelestialVitality {
                         location.add(direction.multiply(1));
                         location.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, location, 8, 0.3F, 0.3F, 0.3F, 0.05F);
                         for (Entity entity : location.getWorld().getNearbyEntities(location, 1, 1, 1)) {
-                            if (entity instanceof LivingEntity) {
+                            if (entity instanceof Player) {
                                 if (entity != player) {
                                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 20 * 5, 1, false));
                                     if (entity instanceof Player) {
                                         Player forEntity = (Player) entity;
-                                        forEntity.setAbsorptionAmount(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() / 15);
+                                        int absorption = (int)player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()/15;
+                                        if(absorption>1000){
+                                            absorption=1000;
+                                        }
+                                        forEntity.setAbsorptionAmount(absorption);
                                         entity.sendMessage("§aYou were healed by " + player.getName() + '!');
                                     }
                                 } else {
-                                    player.setAbsorptionAmount(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() / 10);
+                                    int absorption = (int)player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()/15;
+                                    if(absorption>1000){
+                                        absorption=1000;
+                                    }
+                                    player.setAbsorptionAmount(absorption);
                                 }
                             }
                         }

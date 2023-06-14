@@ -33,9 +33,6 @@ public class WitheristIntoxication {
 
                     if(cd>=20*15){
                         cd=0;
-                        location=null;
-                        origin=null;
-                        direction=null;
                         intoxCooldown.put(player,null);
                         this.cancel();
                     }
