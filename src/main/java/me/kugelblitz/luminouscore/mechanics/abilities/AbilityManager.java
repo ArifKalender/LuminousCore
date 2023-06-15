@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
+import me.kugelblitz.luminouscore.mechanics.abilities.deltus.Blink;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.FieryAura;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.MysticalSeal;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
@@ -124,6 +125,19 @@ public class AbilityManager implements Listener {
                 event.setCancelled(true);
             } else if (entity.getCustomName().equals("§3Utility")) {
                 event.setCancelled(true);
+
+                if(religion.equals("deltus")){
+                    new Blink(player);
+                } else if (religion.equals("siderealist")) {
+                    new MeteorCrash(player);
+                } else if (religion.equals("witherweaver")) {
+                    new SilentLament(player);
+                } else if (religion.equals("zodiac")) {
+                    new SerenityUnifier(player);
+                }else{
+                    player.sendMessage("§cYou haven't chosen a religion!");
+                }
+
             }
 
         }
