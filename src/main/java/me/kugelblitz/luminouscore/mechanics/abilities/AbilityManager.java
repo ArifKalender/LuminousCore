@@ -5,6 +5,7 @@ import me.kugelblitz.luminouscore.mechanics.abilities.deltus.FieryAura;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.MysticalSeal;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.MeteorCrash;
+import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.HighLeap;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
@@ -131,7 +132,7 @@ public class AbilityManager implements Listener {
                 } else if (religion.equals("siderealist")) {
                     new MeteorCrash(player);
                 } else if (religion.equals("witherweaver")) {
-                    new SilentLament(player);
+                    new HighLeap(player);
                 } else if (religion.equals("zodiac")) {
                     new SerenityUnifier(player);
                 }else{
