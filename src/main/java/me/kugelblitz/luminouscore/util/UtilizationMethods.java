@@ -73,6 +73,11 @@ public class UtilizationMethods {
         return location.clone().add(rightSide);
     }
 
+    public static void playRegularSound(Location location,Sound sound, float pitch,float volume){
+        location.getWorld().playSound(location,sound,volume,pitch);
+    }
+
+
     public static void generateCircle(Location centre, Particle particle, float radius) {
         double x = centre.getX();
         double y = centre.getY();
