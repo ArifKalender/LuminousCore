@@ -9,6 +9,7 @@ import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SpatialSoar;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.HighLeap;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.CelestialZap;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.ZenWhip;
 import me.kugelblitz.luminouscore.util.PlayerStats;
@@ -147,7 +148,7 @@ public class AbilityManager implements Listener {
                 } else if (religion.equals("witherweaver")) {
                     new HighLeap(player);
                 } else if (religion.equals("zodiac")) {
-                    new SerenityUnifier(player);
+                    new CelestialZap(player);
                 } else {
                     player.sendMessage("§cYou haven't chosen a religion!");
                 }

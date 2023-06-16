@@ -6,6 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -26,6 +28,7 @@ public class Blink {
                         location.add(direction);
 
                         if (location.getBlock().getType() == Material.AIR || location.getBlock().getType() == Material.WATER) {
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,25,1));
                             location.getWorld().spawnParticle(Particle.WATER_SPLASH, location, 5, 0.2, 0.2, 0.2, 0.05);
                         } else {
                             location.add(direction.multiply(-1));
