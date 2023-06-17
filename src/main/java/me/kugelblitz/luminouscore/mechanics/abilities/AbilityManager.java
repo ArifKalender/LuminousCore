@@ -1,30 +1,33 @@
 package me.kugelblitz.luminouscore.mechanics.abilities;
 
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.Blink;
+import me.kugelblitz.luminouscore.mechanics.abilities.deltus.DeltusBeliever;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.FieryAura;
 import me.kugelblitz.luminouscore.mechanics.abilities.deltus.MysticalSeal;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.CelestialVitality;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.MeteorCrash;
+import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SideRealistFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.siderealist.SpatialSoar;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.HighLeap;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.SilentLament;
+import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristFaith;
 import me.kugelblitz.luminouscore.mechanics.abilities.witherweaver.WitheristIntoxication;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.CelestialZap;
+import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.DoubleRegeneration;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.SerenityUnifier;
 import me.kugelblitz.luminouscore.mechanics.abilities.zodiac.ZenWhip;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import me.kugelblitz.luminouscore.util.UtilizationMethods;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -155,6 +158,32 @@ public class AbilityManager implements Listener {
 
             }
 
+        }
+    }
+
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("witherweaver")) {
+            new WitheristFaith(player);
+        } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("siderealist")) {
+            new SideRealistFaith(player);
+        } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("zodiac")) {
+            new DoubleRegeneration(player);
+        } else if (PlayerStats.getStats().get(player.getUniqueId() + ".Info.Religion").equals("deltus")) {
+            new DeltusBeliever(player);
+        } else {
+
+        }
+    }
+
+    @EventHandler
+    public void onHungerChange(FoodLevelChangeEvent event){
+        if(event.getEntity() instanceof Player){
+            event.setCancelled(true);
+            HumanEntity player=event.getEntity();
+            player.setFoodLevel(20);
         }
     }
 }

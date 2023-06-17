@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 
 public class TriggerEvent implements CommandExecutor {
 
-    Location twilightlocation;
+    Location eventloc;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -18,17 +18,20 @@ public class TriggerEvent implements CommandExecutor {
             if (args.length > 1) {
                 if (args[0].equalsIgnoreCase("start")) {
                     if (args[1].equalsIgnoreCase("twilightresonance")) {
-                        twilightlocation = LuminousCore.plugin.getConfig().getLocation("Events.TwilightResonance.location");
+                        eventloc = LuminousCore.plugin.getConfig().getLocation("Events.TwilightResonance.location");
                         sender.sendMessage("§aTriggering §5Twilight Resonance§a...");
-                        new TwilightResonance(twilightlocation);
+                        new TwilightResonance(eventloc);
                     } else if (args[1].equalsIgnoreCase("silentshaman")) {
 
+                        eventloc = LuminousCore.plugin.getConfig().getLocation("Events.SilentShaman.location");
+                        sender.sendMessage("§aTriggering §5Twilight Resonance§a...");
+                        new TwilightResonance(eventloc);
                     } else {
                         sender.sendMessage("§cAcceptable arguements: <TwilightResonanca | SilentShaman>");
                     }
                 } else if (args[0].equalsIgnoreCase("end")) {
                     if (args[1].equalsIgnoreCase("twilightresonance")) {
-                        twilightlocation = LuminousCore.plugin.getConfig().getLocation("Events.TwilightResonance.location");
+                        eventloc = LuminousCore.plugin.getConfig().getLocation("Events.TwilightResonance.location");
                         sender.sendMessage("§aRemoving §5Twilight Resonance§a...");
                         TwilightResonance.isTwilightResonance = false;
                     } else if (args[1].equalsIgnoreCase("silentshaman")) {
