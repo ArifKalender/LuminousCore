@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.statmanagement;
 
+import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -17,18 +18,25 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 
 public class CustomDamageManager implements Listener {
-
+    double newDamage;
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
             if (event.getEntity() instanceof LivingEntity) {
                 Player player = (Player) event.getDamager();
-                double originalDamage = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
-                double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-                double newDamage = ((maxHealth - 100) * 0.57) + (originalDamage * 1.76);
+                String religion = PlayerStats.getStats().getString(player.getUniqueId()+".Info.Religion");
 
-                event.setCancelled(true);
-                ((LivingEntity) event.getEntity()).damage(newDamage);
+                double originalDamage = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
+                double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();//20% BUFF DON'T FORGET IT
+                if(religion!=null && religion.equals("witherweaver")) {
+                    double newDamage = (((maxHealth - 100) * 0.57) + (originalDamage * 1.76))*1.1;
+                    event.setCancelled(true);
+                    ((LivingEntity) event.getEntity()).damage(newDamage);
+                }else {
+                    double newDamage = ((maxHealth - 100) * 0.57) + (originalDamage * 1.76);
+                    event.setCancelled(true);
+                    ((LivingEntity) event.getEntity()).damage(newDamage);
+                }
 
             }
         }
