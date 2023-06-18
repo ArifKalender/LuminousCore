@@ -1,4 +1,4 @@
-package me.kugelblitz.luminouscore.mechanics.PermaParties;
+package me.kugelblitz.luminouscore.mechanics.misc.permaparties;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
