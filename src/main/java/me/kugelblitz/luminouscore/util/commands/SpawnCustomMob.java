@@ -1,6 +1,7 @@
 package me.kugelblitz.luminouscore.util.commands;
 
 import me.kugelblitz.luminouscore.custom.custommobs.arcanehaven.active.CelestialOrchard;
+import me.kugelblitz.luminouscore.custom.custommobs.arcanehaven.active.Dread;
 import me.kugelblitz.luminouscore.custom.custommobs.arcanehaven.active.Nightmare;
 import me.kugelblitz.luminouscore.custom.custommobs.arcanehaven.passive.AncientEarthling;
 import me.kugelblitz.luminouscore.custom.custommobs.overworld.active.*;
@@ -13,7 +14,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SpawnCustomMob implements CommandExecutor {
+    public class SpawnCustomMob implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -46,6 +47,8 @@ public class SpawnCustomMob implements CommandExecutor {
                         new Nightmare(player.getLocation());
                     } else if (args[0].equalsIgnoreCase("earthling")) {
                         new AncientEarthling(player.getLocation());
+                    }else if (args[0].equalsIgnoreCase("dread")) {
+                        new Dread(player.getLocation());
                     }
                 } else {
                     player.sendMessage("§cYou need to have an arguement to execute this command.");

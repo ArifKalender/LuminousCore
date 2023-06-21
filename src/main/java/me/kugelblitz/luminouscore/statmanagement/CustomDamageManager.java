@@ -28,7 +28,7 @@ public class CustomDamageManager implements Listener {
 
                 double originalDamage = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
                 double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();//20% BUFF DON'T FORGET IT
-                if(religion!=null && religion.equals("witherweaver")) {
+                if (religion!=null && religion.equals("witherweaver")) {
                     double newDamage = (((maxHealth - 100) * 0.57) + (originalDamage * 1.76))*1.1;
                     event.setCancelled(true);
                     ((LivingEntity) event.getEntity()).damage(newDamage);
@@ -37,7 +37,6 @@ public class CustomDamageManager implements Listener {
                     event.setCancelled(true);
                     ((LivingEntity) event.getEntity()).damage(newDamage);
                 }
-
             }
         }
     }
