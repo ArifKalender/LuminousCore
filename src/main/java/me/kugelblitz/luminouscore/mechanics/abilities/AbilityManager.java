@@ -82,13 +82,13 @@ public class AbilityManager implements Listener {
 
         } else {//use ability logic
             abilityManager.put(player, null);
-            if (!a1.isDead()) {
+            if ((!a1.isDead()) && a1!=null) {
                 a1.remove();
             }
-            if (!a2.isDead()) {
+            if ((!a2.isDead())&&a1!=null) {
                 a2.remove();
             }
-            if (!a3.isDead()) {
+            if ((!a3.isDead())&&a1!=null) {
                 a3.remove();
             }
         }
