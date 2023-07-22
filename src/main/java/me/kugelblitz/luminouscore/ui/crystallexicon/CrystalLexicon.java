@@ -1,5 +1,6 @@
 package me.kugelblitz.luminouscore.ui.crystallexicon;
 
+import me.kugelblitz.luminouscore.mechanics.currency.MaterialManager;
 import me.kugelblitz.luminouscore.util.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -50,7 +51,15 @@ public class CrystalLexicon {
         ItemStack enderChest = new ItemStack(Material.ENDER_CHEST, 1);
         ItemMeta enderChestMeta = enderChest.getItemMeta();
         enderChestMeta.setDisplayName("§dEnder Chest");
-        enderChestMeta.setLore(Arrays.asList("", "Click here to open your enderchest."));
+        enderChestMeta.setLore(Arrays.asList("", "Click here to open your enderchest.","","§bMaterials",
+                "§3Astral Memory §e"+ MaterialManager.astralMemory.get(player)+"§6/"+"§e24",
+                "§3Dimensional Residue §e"+ MaterialManager.dResidue.get(player)+"§6/§e24",
+                "§3Woke Echo §e"+ MaterialManager.wokeEcho.get(player)+"§6/§e24",
+                "§3Veil Catalyst §e"+ MaterialManager.veilCatalyst.get(player)+"§6/§e24",
+                "§3Celestial Glyph §e"+ MaterialManager.cGlyph.get(player)+"§6/§e24",
+                "§3Control Essence §e"+ MaterialManager.controlEssence.get(player)+"§6/§e24",
+                "§3Starlight Resonance §e"+ MaterialManager.starLight.get(player)+"§6/§e24",
+                "§3Amplified Entropy §e"+ MaterialManager.entropy.get(player)+"§6/§e24"));
         enderChest.setItemMeta(enderChestMeta);
         gui.setItem(14, enderChest);
 

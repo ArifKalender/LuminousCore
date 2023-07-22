@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import static me.kugelblitz.luminouscore.LuminousCore.plugin;
+import static me.kugelblitz.luminouscore.mechanics.currency.MaterialManager.*;
 
 public class NullFixer implements Listener {
 
@@ -43,12 +44,14 @@ public class NullFixer implements Listener {
             PlayerStats.saveStats();
 
         }
+        Player player=event.getPlayer();
+        materialFixer(player);
+
         event.getPlayer().setHealthScale(40);
         event.getPlayer().setHealthScaled(true);
         event.getPlayer().setHealth(event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         CorruptedHeart.healcd.put(event.getPlayer(), false);
 
-        Player player = event.getPlayer();
         player.setHealthScale(40);
         new BukkitRunnable() {
             @Override
@@ -79,5 +82,33 @@ public class NullFixer implements Listener {
             }
         }.runTaskTimer(plugin, 0, 20); // Replace 'plugin' with your reference to the plugin instance
 
+    }
+
+    private void materialFixer(Player player){
+        if(astralMemory.get(player)==null){
+            astralMemory.put(player,0);
+        }
+        if(dResidue.get(player)==null){
+            dResidue.put(player,0);
+        }
+        if(wokeEcho.get(player)==null){
+            wokeEcho.put(player,0);
+
+        }
+        if(veilCatalyst.get(player)==null){
+            veilCatalyst.put(player,0);
+        }
+        if(cGlyph.get(player)==null){
+            cGlyph.put(player,0);
+        }
+        if(controlEssence.get(player)==null){
+            controlEssence.put(player,0);
+        }
+        if(starLight.get(player)==null){
+            starLight.put(player,0);
+        }
+        if(entropy.get(player)==null){
+            entropy.put(player,0);
+        }
     }
 }
