@@ -33,6 +33,7 @@ import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 
+@Deprecated
 public class AbilityManager implements Listener {
 
     public static HashMap<Player, Boolean> abilityManager = new HashMap<Player, Boolean>();
