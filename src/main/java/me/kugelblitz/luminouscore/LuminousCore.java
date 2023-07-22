@@ -6,6 +6,7 @@ import me.kugelblitz.luminouscore.custom.customitems.items.ItemListener;
 import me.kugelblitz.luminouscore.custom.customitems.items.LuckyCharm;
 import me.kugelblitz.luminouscore.custom.custommobs.MobListener;
 import me.kugelblitz.luminouscore.mechanics.abilities.AbilityExecution;
+import me.kugelblitz.luminouscore.mechanics.currency.MaterialManager;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.CurrentMayor;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.MayorHandler;
 import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.*;
@@ -94,6 +95,8 @@ public final class LuminousCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
         getServer().getPluginManager().registerEvents(new NullFixer(), this);
         getServer().getPluginManager().registerEvents(new CrystalListener(), this);
+
+        getServer().getPluginManager().registerEvents(new MaterialManager(), this);
 
         new Regeneration().regenerate();
         new Regeneration().indicate();
