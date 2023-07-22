@@ -33,6 +33,7 @@ public class NullFixer implements Listener {
             PlayerStats.getStats().set(uuid + ".Stats.Agility", 100);
             PlayerStats.getStats().set(uuid + ".Info.PlayerLevel", 0);
             PlayerStats.getStats().set(uuid + ".Info.FootPrint", "empty");
+            PlayerStats.getStats().set(uuid + ".Info.Religion", "empty");
             PlayerStats.getStats().set(uuid + ".Stats.Intelligence", 100);
             PlayerStats.getStats().set(uuid + ".Stats.Aggression", 0);
             PlayerStats.getStats().set(uuid + ".Stats.MagicDamage", 0.25);
