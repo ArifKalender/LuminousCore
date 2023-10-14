@@ -1,25 +1,25 @@
 package me.kugelblitz.luminouscore;
 
-import me.kugelblitz.luminouscore.cosmetic.Footprint;
-import me.kugelblitz.luminouscore.custom.customitems.ItemFix;
-import me.kugelblitz.luminouscore.custom.customitems.items.ItemListener;
-import me.kugelblitz.luminouscore.custom.customitems.items.LuckyCharm;
-import me.kugelblitz.luminouscore.custom.custommobs.MobListener;
-import me.kugelblitz.luminouscore.mechanics.abilities.AbilityExecution;
-import me.kugelblitz.luminouscore.mechanics.currency.MaterialManager;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.CurrentMayor;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.MayorHandler;
-import me.kugelblitz.luminouscore.mechanics.mayorsystem.mayors.*;
-import me.kugelblitz.luminouscore.mechanics.religionmanager.BeforeReligion;
-import me.kugelblitz.luminouscore.mechanics.religionmanager.ReligionListener;
-import me.kugelblitz.luminouscore.statmanagement.CustomDamageManager;
-import me.kugelblitz.luminouscore.statmanagement.Regeneration;
-import me.kugelblitz.luminouscore.ui.ClickEvent;
-import me.kugelblitz.luminouscore.ui.FootprintMenu;
-import me.kugelblitz.luminouscore.ui.crystallexicon.CrystalListener;
-import me.kugelblitz.luminouscore.util.NullFixer;
-import me.kugelblitz.luminouscore.util.PlayerStats;
-import me.kugelblitz.luminouscore.util.commands.*;
+import me.kugelblitz.luminouscore.PowerSurge.ArenaKill;
+import me.kugelblitz.luminouscore.luminousrealms.cosmetic.Footprint;
+import me.kugelblitz.luminouscore.luminousrealms.custom.customitems.ItemFix;
+import me.kugelblitz.luminouscore.luminousrealms.custom.customitems.items.ItemListener;
+import me.kugelblitz.luminouscore.luminousrealms.custom.customitems.items.LuckyCharm;
+import me.kugelblitz.luminouscore.luminousrealms.custom.custommobs.MobListener;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.currency.MaterialManager;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.mayorsystem.CurrentMayor;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.mayorsystem.MayorHandler;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.mayorsystem.mayors.*;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.religionmanager.BeforeReligion;
+import me.kugelblitz.luminouscore.luminousrealms.mechanics.religionmanager.ReligionListener;
+import me.kugelblitz.luminouscore.luminousrealms.statmanagement.CustomDamageManager;
+import me.kugelblitz.luminouscore.luminousrealms.statmanagement.Regeneration;
+import me.kugelblitz.luminouscore.luminousrealms.ui.ClickEvent;
+import me.kugelblitz.luminouscore.luminousrealms.ui.FootprintMenu;
+import me.kugelblitz.luminouscore.luminousrealms.ui.crystallexicon.CrystalListener;
+import me.kugelblitz.luminouscore.luminousrealms.util.NullFixer;
+import me.kugelblitz.luminouscore.luminousrealms.util.PlayerStats;
+import me.kugelblitz.luminouscore.luminousrealms.util.commands.*;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -84,7 +84,6 @@ public final class LuminousCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MoragMayorF(), this);
 
         getServer().getPluginManager().registerEvents(new ItemFix(), this);
-        getServer().getPluginManager().registerEvents(new AbilityExecution(), this);
         getServer().getPluginManager().registerEvents(new ReligionListener(), this);
         getServer().getPluginManager().registerEvents(new MobListener(), this);
         getServer().getPluginManager().registerEvents(new ItemListener(), this);
@@ -98,8 +97,13 @@ public final class LuminousCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new MaterialManager(), this);
 
+
         new Regeneration().regenerate();
         new Regeneration().indicate();
+
+
+        //POWER SURGE
+        getServer().getPluginManager().registerEvents(new ArenaKill(), this);
     }
 
     public void registerCommands() {
